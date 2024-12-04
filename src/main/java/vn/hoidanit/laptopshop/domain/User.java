@@ -1,6 +1,15 @@
 package vn.hoidanit.laptopshop.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+//model->repository->database
+@Entity
 public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String email;
     private String password;
@@ -28,7 +37,7 @@ public class User {
         return password;
     }
 
-    public void setPassward(String password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 
