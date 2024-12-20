@@ -6,7 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -28,11 +28,13 @@ public class UserController {
 
     private UserService userService;
     private UploadService uploadService;
+    private final PasswordEncoder passwordEncoder;
 
-    public UserController(UploadService uploadService,
+    public UserController(PasswordEncoder passwordEncoder, UploadService uploadService,
             UserService userService, ServletContext servletContext) {
         this.userService = userService;
         this.uploadService = uploadService;
+        this.passwordEncoder = passwordEncoder;
 
     }
 
@@ -70,8 +72,12 @@ public class UserController {
     public String postCreateUser(Model model, @ModelAttribute("newUser") User hoidanit,
             @RequestParam("hoidanitFile") MultipartFile file) {
         String avatar = this.uploadService.handleSaveUploadFile(file, "avatar");
+        String hashPassword = this.passwordEncoder.encode(hoidanit.getPassword());
 
-        // this.userService.handleSaveUser(hoidanit);
+        hoidanit.setAvatar(avatar);
+        hoidanit.setPassword(hashPassword);
+        hoidanit.setRole(this.userService.getRoleByName(hoidanit.getRole().getName()));
+        this.userService.handleSaveUser(hoidanit);
         return "redirect:/admin/user";
     }
 
