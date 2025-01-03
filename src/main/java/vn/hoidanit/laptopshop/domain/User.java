@@ -11,7 +11,6 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
@@ -33,8 +32,8 @@ public class User {
     @Size(min = 2, message = "Tên người dùng tối thiểu là 2 ký tự")
     private String fullName;
     private String address;
-    @NotNull
-    @Size(min = 2, message = "Số điện thoại tối thiểu 2 chữ số")
+    // @NotNull
+    // @Size(min = 2, message = "Số điện thoại tối thiểu 2 chữ số")
     private String phone;
 
     private String avatar;

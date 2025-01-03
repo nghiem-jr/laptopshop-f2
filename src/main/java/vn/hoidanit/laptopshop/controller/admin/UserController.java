@@ -26,6 +26,8 @@ public class UserController {
 
     private UserService userService;
     private UploadService uploadService;
+
+    // hashpassword
     private final PasswordEncoder passwordEncoder;
 
     public UserController(PasswordEncoder passwordEncoder, UploadService uploadService,
