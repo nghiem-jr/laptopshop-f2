@@ -100,7 +100,7 @@ public class ProductController {
         // validate
         if (newProductBindingResult.hasErrors()) {
             long id = junior.getId();
-            return "/admin/product/update";
+            return "admin/product/update";
         }
 
         Product currentPro = this.productService.getProductById(junior.getId());

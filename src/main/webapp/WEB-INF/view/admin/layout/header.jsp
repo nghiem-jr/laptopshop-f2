@@ -14,7 +14,9 @@
                 <!-- <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i
             class="fas fa-search"></i></button> -->
                 <!-- </div> -->
-                <span style="color: aliceblue;padding-top: 5px;">Welcome, nghiêm-junior</span>
+                <span style="color: aliceblue;padding-top: 5px;">Welcome,
+                    <c:out value="${pageContext.request.userPrincipal.name}" />
+                </span>
             </form>
             <!-- Navbar-->
             <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
@@ -27,7 +29,12 @@
                         <li>
                             <hr class="dropdown-divider" />
                         </li>
-                        <li><a class="dropdown-item" href="#!">Logout</a></li>
+                        <li>
+                            <form method="post" action="/logout">
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                                <button class="dropdown-item" href="#">Đăng xuất</button>
+                            </form>
+                        </li>
                     </ul>
                 </li>
             </ul>

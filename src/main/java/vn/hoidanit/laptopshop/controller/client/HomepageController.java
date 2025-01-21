@@ -37,7 +37,7 @@ public class HomepageController {
     public String getHomePage(Model model) {
         List<Product> products = this.productService.fetchProducts();
         model.addAttribute("products", products);
-        return "/client/homepage/show";
+        return "client/homepage/show";
     }
 
     @GetMapping("/register")
@@ -52,7 +52,8 @@ public class HomepageController {
 
         List<FieldError> errors = registerDTOBindingResult.getFieldErrors();
         for (FieldError error : errors) {
-            System.out.println(">>>>>>>>>>>>" + error.getField() + " - " + error.getDefaultMessage());
+            System.out.println(">>>>>>>>>>>>" + error.getField() + " - " +
+                    error.getDefaultMessage());
         }
 
         if (registerDTOBindingResult.hasErrors()) {
@@ -70,6 +71,11 @@ public class HomepageController {
     @GetMapping("/login")
     public String getLoginPage() {
         return "client/auth/login";
+    }
+
+    @GetMapping("/access-deny")
+    public String getDenyPage() {
+        return "client/auth/deny";
     }
 
 }

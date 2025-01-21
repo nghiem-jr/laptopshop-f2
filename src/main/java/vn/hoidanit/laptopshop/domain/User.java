@@ -13,6 +13,7 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import vn.hoidanit.laptopshop.service.validator.StrongPassword;
 
 //model->repository->database
 @Entity
@@ -27,6 +28,7 @@ public class User {
     private String email;
     @NotNull
     @Size(min = 2, message = "Mật khẩu tối thiểu là 2 ký tự")
+    // @StrongPassword(message = "Password phải có 8 ký tự bla bla")
     private String password;
     @NotNull
     @Size(min = 2, message = "Tên người dùng tối thiểu là 2 ký tự")
