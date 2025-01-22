@@ -44,7 +44,7 @@ public class HomepageController {
 
     @GetMapping("/")
     public String getHomePage(Model model, HttpServletRequest request) {
-        List<Product> products = this.productService.fetchProducts();
+        List<Product> products = this.productService.findAllProducts();
         model.addAttribute("products", products);
         HttpSession session = request.getSession();
         return "client/homepage/show";
