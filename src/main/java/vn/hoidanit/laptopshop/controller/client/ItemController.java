@@ -168,6 +168,7 @@ public class ItemController {
 
         List<Product> products = prs.getContent().size() > 0 ? prs.getContent()
                 : new ArrayList<Product>();
+
         // String name = productCriteriaDTO.getPage().isPresent() ?
         // productCriteriaDTO.getPage().get() : "";
         // Page<Product> prs = this.productService.fetchProductsWithSpec(pageable,

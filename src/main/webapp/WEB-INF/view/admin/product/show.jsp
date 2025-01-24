@@ -68,8 +68,11 @@
                                                                             class="btn btn-success">view</a>
                                                                         <a href="/admin/product/update/${product.id}"
                                                                             class="btn btn-warning">update</a>
+
                                                                         <a href="/admin/product/delete/${product.id}"
                                                                             class="btn btn-danger">delete</a>
+                                                                        <a href="/admin/product/update/${product.id}"
+                                                                            class="btn btn-warning">update2</a>
                                                                     </td>
                                                                 </tr>
                                                             </c:forEach>
